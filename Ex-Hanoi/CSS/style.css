@@ -1,0 +1,67 @@
+
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#controller {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.controllerItems {
+    margin: 10px;
+    /* width: 15px; */
+    height: 20px;
+    border-radius: 7px;
+}
+
+#towersDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 90%;
+    height: 660px;
+}
+
+.towers {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.disks {
+    background-color: aqua;
+    margin: 7px;
+    text-align: center;
+    border-radius: 10px;
+    height: 20px;
+}
+
+.button{
+    background-color: #00cbcc;
+    border-width: 0px;
+}
+
+
+
+.list-item {
+    display: inline-block;
+    margin-right: 10px;
+}
+.list-enter-active, .list-leave-active {
+    transition: all 0.4s;
+}
+.list-enter-active {
+    transition-delay: 0.1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateY(-300px);
+
+}

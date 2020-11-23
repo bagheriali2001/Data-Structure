@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparse Calculater</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="header">
+            <div id="operation-selector-div" style="flex-direction: row;" class="header-divs" :style="{display : isOperationSelector ? 'flex' : 'none' }">
+                <label for="operation-selector">Operation : </label>
+                <select id="operation-selector" v-model="operation">
+                    <option value="" disabled selected>Please choose operation ...</option>
+                    <option value="addition">Addition</option>
+                    <option value="subtraction">Subtraction</option>
+                    <option value="multiplication">Multiplication</option>
+                    <option value="transposed">Transposed</option>
+                </select>
+            </div>
+            <div id="matrix-dimensions-length" class="header-divs" :style="{display : isMatrixDimensionsLength ? 'flex' : 'none' }">
+                <div class="dimensions-length-chooser-div">
+                    <label>Matrix 1 : </label>
+                    <h5>Rows : </h5>
+                    <input type="number" v-model="matrix1Row">
+                    <h5>Columns : </h5>
+                    <input type="number" v-model="matrix1Col">
+                </div>
+                <div class="dimensions-length-chooser-div" :style="{display : needTwo ? 'flex' : 'none' }">
+                    <label>Matrix 2 : </label>
+                    <h5>Rows : </h5>
+                    <input type="number" v-model="matrix2Row">
+                    <h5>Columns : </h5>
+                    <input type="number" v-model="matrix2Col">
+                </div>
+                <div class="dimensions-length-chooser-div"></div>
+            </div>
+            <div id="value-setter-div" style="flex-direction: row;" class="header-divs" :style="{display : isValueSetter ? 'flex' : 'none' }">
+                <div class="value-chooser-div" :style="{display : needTwo ? 'flex' : 'none' }">
+                    <h5>Matrix : </h5>
+                    <input type="number" id="matrix-index" placeholder="Matrix ..." v-model="currentMatrix">
+                </div>
+                <div class="value-chooser-div">
+                    <h5>Row : </h5>
+                    <input type="number" id="row-index" placeholder="Row ..." v-model="currentRow">
+                </div>
+                <div class="value-chooser-div">
+                    <h5>Col : </h5>
+                    <input type="number" id="col-index" placeholder="Column ..." v-model="currentCol">
+                </div>
+                <div class="value-chooser-div">
+                    <h5>Value : </h5>
+                    <input type="number" id="element-value" placeholder="Value ..." v-model="currentValue">
+                </div>
+                <button id="header-button" @click="setValue()">Set Value</button>
+            </div>
+            <div id="operation-selector-div" style="flex-direction: row;" class="header-divs">
+                <button id="header-button" @click="buttonPress()" :style="{display : isButton ? 'block' : 'none' }">{{ buttonText }}</button>
+                <button id="reset-button" @click="resetPress()" :style="{display : isRestart ? 'block' : 'none' }">Reset</button>
+            </div>
+        </div>
+        <div style="display: flex;flex-direction: row;">
+            <div id="matrix1" class="matrix">
+                <div v-for="i in matrix1.row" class="matrix-row">
+                    <div v-for="j in matrix1.col" class="matrix-element" @click="setTiles(1,i,j)" :style="{color : (currentMatrix==1 && currentRow==i && currentCol==j) ? 'aqua' : 'black' }"> <div>{{ matrix1.data[(i-1)*(matrix1.col.length)+j-1] }}</div> </div>
+                </div>
+            </div>
+            <div id="matrix2" class="matrix" :style="{display : needTwo ? 'flex' : 'none' }">
+                <div v-for="i in matrix2.row" class="matrix-row">
+                    <div v-for="j in matrix2.col" class="matrix-element" @click="setTiles(2,i,j)":style="{color : (currentMatrix==2 && currentRow==i && currentCol==j) ? 'aqua' : 'black' }"> <div>{{ matrix2.data[(i-1)*(matrix2.col.length)+j-1] }}</div> </div>
+                </div>
+            </div>
+        </div>
+        <div id="matrix-final">
+            <div id="matrixRes" class="matrix">
+                <div v-for="i in matrixRes.row" class="matrix-row">
+                    <div v-for="j in matrixRes.col" class="matrix-element"> <div>{{ matrixRes.data[(i-1)*(matrixRes.col.length)+j-1] }}</div> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="CSS/style.css">
+        <link rel="stylesheet" href="CSS/animate.css">
+    </head>
+    <body style="background-color: #d6ffad;">
+        <div id="app">
+            <div id="controller">
+                <div id="basicControllers" :style="{ display : displayBasicControllers ? 'block' : 'none' }">
+                    <input type="number" class="controllerItems" @input="setDisks">
+                    <button id="autoStart" class="controllerItems button" @click="calculateSteps('auto')">Auto Start</button>
+                    <button id="manualStart" class="controllerItems button" @click="calculateSteps('manual')">Manual Start</button>
+                </div>
+                <div id="autoControllers" :style="{ display : displayAutoControllers ? 'block' : 'none' }">
+                    <input type="number" class="controllerItems" v-model="sleepTime">
+                    <button id="pause" class="controllerItems button" @click="setpause">{{ (pause) ?  "Start" : "Pause"}}</button>
+                    <button id="restart-1" class="controllerItems button" @click="restart('auto')">Restart</button>
+                    <button id="final-1" class="controllerItems button"@click="final('auto')">Final</button>
+                </div>
+                <div id="manualControllers" :style="{ display : displayManualControllers ? 'block' : 'none' }">
+                    <button id="goOneStep" class="controllerItems button" @click="oneStep">Go One Step</button>
+                    <button id="restart-2" class="controllerItems button" @click="restart('manual')">Restart</button>
+                    <button id="final-2" class="controllerItems button" @click="final('manual')">Final</button>
+                </div>
+                
+            </div>
+            <div id="towersDiv">
+                <div class="towers" id="tower1">
+                    <transition-group name="list"  class="towers">
+                        <div v-for="disk in stack1.array" :key="disk.id" class="disks" :style="{width: disk.width + 'px'}" class="animate__animated">{{ disk.id }}</div>
+                    </transition-group>
+                </div>
+                <div class="towers" id="tower2">
+                    <transition-group name="list"  class="towers">
+                        <div v-for="disk in stack2.array" :key="disk.id" class="disks" :style="{width: disk.width + 'px'}" class="animate__animated">{{ disk.id }}</div>
+                    </transition-group>
+                </div>
+                <div class="towers" id="tower3">
+                    <transition-group name="list"  class="towers">
+                        <div v-for="disk in stack3.array" :key="disk.id" class="disks" :style="{width: disk.width + 'px'}" class="animate__animated">{{ disk.id }}</div>
+                    </transition-group>
+                </div>
+            </div>
+        </div>
+        <script src="JS/vue.js"></script>
+        <script src="JS/app.js" defer></script>
+    </body>
+</html>

@@ -1,0 +1,91 @@
+body{
+    background-color: #d0d0d0;
+}
+button{
+    border-radius: 5px;
+    border-color: none;
+    padding: 3px 10px;
+}
+button:hover{
+    background-color: red;
+}
+input{
+    border-radius: 5px;
+    border-color: none;
+
+}
+select{
+    border-radius: 7px;
+    background-color: white;
+    border-color: none;
+}
+#app{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#header{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.header-divs{
+    margin: 10px;
+    display: inherit;
+    height: 51px;
+    justify-content: center;
+    align-items: center;
+}
+.value-chooser-div{
+    margin: 10px;
+    height: 21px;
+    display: inherit;
+    flex-direction: row;
+}
+.dimensions-length-chooser-div{
+    display: inherit;
+    flex-direction: row;
+    margin: 10px;
+}
+.matrix{
+    display: flex;
+    flex-direction: column;
+    border-left: solid black 2px;
+    border-radius: 20px;
+    border-right: solid black 2px;
+    margin: 20px;
+}
+.matrix-row{
+    display: flex;
+    flex-direction: row;
+}
+.matrix-element{
+    margin: 5px;
+    width: 51px;
+    height: 51px;
+    display: flex;
+    place-items: center;
+}
+.matrix-element:hover{
+    color: red;
+}
+.matrix-element div{
+    margin: 0px;
+}
+button{
+    margin: 5px;
+}
+label{
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 17px;
+}
+input{
+    height: 20px;
+}
+h5{
+    margin: 8px;
+}
